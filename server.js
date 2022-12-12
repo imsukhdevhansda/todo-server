@@ -39,7 +39,7 @@ server.post("/login", async (req, res) => {
 
       let user = await UserModel.findOne({ $and: [{ email, password }] });
       if (user) {
-        let token = jwt.sign({ UserId: user._id }, process.env.SECRET_key);
+        let token = jwt.sign({ UserId: user._id }, process.env.SECRET_KEY);
 
         res.send({ msg: "Login Successful", token });
       } else {
